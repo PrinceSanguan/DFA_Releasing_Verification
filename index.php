@@ -38,9 +38,9 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
 // Redirect logged-in users to the appropriate page
 if (isset($_SESSION['user'])) {
   if ($_SESSION['user'] === 'admin' || $_SESSION['user'] === 'processor') {
-      header('Location: pages/verification.php');
+      header('Location: app/pages/verification.php');
   } elseif ($_SESSION['user'] === 'programmer') {
-      header('Location: pages/verification.php'); // Change this to the appropriate Programmer page
+      header('Location: app/pages/verification.php'); // Change this to the appropriate Programmer page
   }
   exit();
 }
