@@ -53,29 +53,29 @@ if (isset($_SESSION['user'])) {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/png" href="images/DFA.png">
+    <link rel="icon" type="image/png" href="assets/images/DFA.png">
     <title>DFA Releasing Verification</title>
-    <link rel="stylesheet" href="css/style.css" />
-    l
+    <link rel="stylesheet" href="assets/css/style.css" />
+    
 
   </head>
   <body>
     <section>
       <div class="box">
         <div class="form">
-          <img src="img/DFA.png" class="user" alt="broken-image" />
+          <img src="assets/images/DFA.png" class="user" alt="broken-image" />
           <h2>MABUHAY!</h2>
           <form class="" action="index.php" method="post" >
            
           <!-- Log in Page -->
             <div class="inputBx">
               <input type="text" name="username" placeholder="Username" id="username" oninput="validation()" required autofocus autocomplete="off"/>
-              <img src="images/user.png" alt="broken-image" />
+              <img src="assets/images/user.png" alt="broken-image" />
             </div>
 
             <div class="inputBx">
               <input type="password" name="password" id="password" placeholder="Password" oninput="validation()" required />
-              <img src="images/lock.png" alt="broken-image" />
+              <img src="assets/images/lock.png" alt="broken-image" />
             </div>
 
 

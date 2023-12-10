@@ -87,7 +87,7 @@ include "../includes/header.php";
       $fileExtension = strtolower(end($fileExtension));
 			$newFileName = date("Y.m.d") . " - " . date("h.i.sa") . "." . $fileExtension;
 
-			$targetDirectory = "../../assets/uploads" . $newFileName;
+			$targetDirectory = "../../assets/uploads/" . $newFileName;
 			move_uploaded_file($_FILES['excel']['tmp_name'], $targetDirectory);
 
 			require '../../assets/excelReader/excel_reader2.php';
