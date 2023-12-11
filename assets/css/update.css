@@ -1,0 +1,61 @@
+/* Style for Form */
+
+form {
+  justify-content: space-between;
+}
+
+label {
+  font-size: 25px;
+}
+
+input {
+  font-size: 25px;
+  width: 100%;
+}
+
+select {
+  font-size: 25px;
+  width: 100%;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Two columns */
+  grid-gap: 20px; /* Adjust the gap between grid items */
+}
+
+.grid-item {
+  padding: 30px;
+}
+
+.updateRecord {
+}
+
+/* button */
+
+button[type="submit"] {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+/* Cancel button */
+button[type="button"] {
+  background-color: #ff0000; /* Red background color */
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button[type="button"]:hover {
+  background-color: lightcoral; /* Lighter red on hover */
+}

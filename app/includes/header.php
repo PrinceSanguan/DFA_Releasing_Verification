@@ -18,6 +18,7 @@
     <div class="container2">
       <ul class="navlist">
         <li id="verification"><a href="../../app/pages/verification.php">Verification</a></li>
+        <li id="verification"><a href="../../app/pages/search.php">Search</a></li>
         <li id="monitoring"><a href="../../app/pages/monitoring.php">Monitoring</a></li>
         <li id="reports"><a href="../../app/pages/reports.php">Reports</a></li>
         <li id="tools"><a href="../../app/pages/tools.php">Tools</a></li>

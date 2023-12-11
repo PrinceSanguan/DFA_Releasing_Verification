@@ -89,7 +89,12 @@ include "../includes/header.php";
             <th>Gender Name</th>
             <th>Birth Date</th>
             <th>Birth Place</th>
-            <th>Scan Date</th>
+            <th>Site</th>
+            <th>Package Id</th>
+            <th>Released By</th>
+            <th>Claimed By</th>
+            <th>Notes</th>
+            <th>Scan Time</th>
             <!-- Add more columns as needed -->
         </tr>
 
@@ -104,6 +109,11 @@ include "../includes/header.php";
             echo "<td>" . $row['gender'] . "</td>";
             echo "<td>" . $row['birthDate'] . "</td>";
             echo "<td>" . $row['birthPlace'] . "</td>";
+            echo "<td>" . $row['site'] . "</td>";
+            echo "<td>" . $row['packageId'] . "</td>";
+            echo "<td>" . $row['releasedBy'] . "</td>";
+            echo "<td>" . $row['claimedBy'] . "</td>";
+            echo "<td>" . $row['notes'] . "</td>";
             echo "<td>" . $row['scan_datetime'] . "</td>";
             // Add more columns as needed
             echo "</tr>";

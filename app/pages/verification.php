@@ -61,6 +61,8 @@ if (isset($_POST['appointmentCode'])) {
         $gender = $row['gender'];
         $birthDate = $row['birthDate'];
         $birthPlace = $row['birthPlace'];
+        $site = $row['site'];
+        $packageId = $row['packageId'];
 
         // Check if there is already an entry for the same barcode on the same day
         $existingEntrySql = "SELECT * FROM releasing_scan WHERE appointmentCode = ? AND DATE(scan_datetime) = CURDATE()";
@@ -76,16 +78,16 @@ if (isset($_POST['appointmentCode'])) {
             $resultMessage = "Barcode already scanned today. You can scan it again tomorrow.";
         } else {
             // Data does not exist in table 2, so insert it
-            $insertSql = "INSERT INTO releasing_scan (appointmentCode, lastName, firstName, middleName, gender, birthDate, birthPlace, scan_datetime) VALUES (?, ?, ?, ?, ?, ?, ?, NOW())";
+            $insertSql = "INSERT INTO releasing_scan (appointmentCode, lastName, firstName, middleName, gender, birthDate, birthPlace, site, packageId, scan_datetime) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, NOW())";
             $insertStmt = $conn->prepare($insertSql);
-
+            
             // Check if the insert statement preparation failed
             if ($insertStmt === false) {
                 die("Prepare failed: " . $conn->error);
             }
-
+            
             // Bind the parameters for the insert statement
-            $insertStmt->bind_param("sssssss", $_SESSION['scanned_appointmentCode'], $lastName, $firstName, $middleName, $gender, $birthDate, $birthPlace);
+            $insertStmt->bind_param("sssssssss", $_SESSION['scanned_appointmentCode'], $lastName, $firstName, $middleName, $gender, $birthDate, $birthPlace, $site, $packageId);
 
             // Execute the insert statement
             if ($insertStmt->execute()) {
@@ -169,7 +171,7 @@ include "../includes/header.php";
   if (resultDiv.innerHTML === "Success" || resultDiv.innerHTML === "Appointment code not found in the database." || resultDiv.innerHTML === "Barcode already scanned today. You can scan it again tomorrow.") {
     setTimeout(function() {
       resultDiv.style.display = 'none';
-    }, 2000);
+    }, 5000);
 
     // Play the success audio
     if (resultDiv.innerHTML === "Success") {

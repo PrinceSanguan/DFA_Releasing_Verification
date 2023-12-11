@@ -62,10 +62,12 @@ include "../includes/header.php";
 				<td>Gender</td>
 				<td>Birth Date</td>
 				<td>Birth Place</td>
+				<td>Site</td>
+				<td>Package ID</td>
 			</tr>
 			<?php
 			$i = 1;
-			$rows = mysqli_query($conn, "SELECT appointmentCode, lastName, firstName, middlename, gender, birthDate, birthPlace FROM releasing_data");
+			$rows = mysqli_query($conn, "SELECT appointmentCode, lastName, firstName, middlename, gender, birthDate, birthPlace, site, packageId FROM releasing_data");
 
 			foreach($rows as $row) :
 			?>
@@ -77,6 +79,8 @@ include "../includes/header.php";
 				<td> <?php echo $row["gender"]; ?> </td>
 				<td> <?php echo $row["birthDate"]; ?> </td>
 				<td> <?php echo $row["birthPlace"]; ?> </td>
+				<td> <?php echo $row["site"]; ?> </td>
+				<td> <?php echo $row["packageId"]; ?> </td>
 			</tr>
 			<?php endforeach; ?>
 		</table>
@@ -109,9 +113,11 @@ include "../includes/header.php";
 				$gender = $row[4];
 				$birthDate = $row[5];
 				$birthPlace = $row[6];
+				$site = $row[7];
+				$packageId = $row[8];
 
-				if (mysqli_query($conn, "INSERT INTO releasing_data (appointmentCode, lastName, firstName, middleName, gender, birthDate, BirthPlace) 
-																	VALUES ('$appointmentCode', '$lastName', '$firstName', '$middleName', '$gender', '$birthDate', '$birthPlace')")) {
+				if (mysqli_query($conn, "INSERT INTO releasing_data (appointmentCode, lastName, firstName, middleName, gender, birthDate, BirthPlace, site, packageId) 
+																	VALUES ('$appointmentCode', '$lastName', '$firstName', '$middleName', '$gender', '$birthDate', '$birthPlace', '$site', '$packageId')")) {
           echo "Data inserted successfully";
       } else {
           echo "Error: " . mysqli_error($conn);
@@ -148,7 +154,9 @@ include "../includes/header.php";
     middleName VARCHAR(255),
     gender VARCHAR(10),
     birthDate VARCHAR(255),
-    birthPlace VARCHAR(255)
+    birthPlace VARCHAR(255),
+		site VARCHAR(255),
+		packageId VARCHAR(255)
 );
 
  This is how to create a table for reference only!! dont touch this!!!!
