@@ -1,18 +1,19 @@
 <?php
 session_start();
 
-// Check if the user is DFA Employee
-if (!isset($_SESSION['user']) || ($_SESSION['user'] !== 'processor' && $_SESSION['user'] !== 'admin' && $_SESSION['user'] !== 'programmer')) {
+// Check if the user is DFA Employee (Administrator or Verification User)
+if (!isset($_SESSION['user']) || ($_SESSION['role'] !== 'Administrator' && $_SESSION['role'] !== 'Verification User')) {
   // Redirect to a different page or display an error message
-  echo "Access denied. Only DFA Employee can access here!.";
+  echo "Access denied. Only Administrator and Verification User can access here!";
   exit();
 }
+
 // Get the user's role from the session
 if (isset($_SESSION['role'])) {
-    $userRole = $_SESSION['role'];
+  $userRole = $_SESSION['role'];
 } else {
-    // Default role if not set (you can customize this as needed)
-    $userRole = "Unknown";
+  // Default role if not set (you can customize this as needed)
+  $userRole = "Unknown";
 }
 
 // Initialize the result message variable

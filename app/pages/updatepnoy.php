@@ -1,10 +1,10 @@
 <?php
 session_start();
 
-// Check if the user is DFA Employee (Administrator, Window2, or Window3)
-if (!isset($_SESSION['user']) || ($_SESSION['role'] !== 'Administrator' && $_SESSION['role'] !== 'Windows 2' && $_SESSION['role'] !== 'Windows 3')) {
+// Check if the user is DFA Employee (Administrator, Locator, or Reliever)
+if (!isset($_SESSION['user']) || ($_SESSION['role'] !== 'Administrator' && $_SESSION['role'] !== 'Locator' && $_SESSION['role'] !== 'Reliever')) {
   // Redirect to a different page or display an error message
-  echo "Access denied. Only Administrator, Window2, and Window3 can access here!";
+  echo "Access denied. Only Administrator, Locator, and Reliever can access here!";
   exit();
 }
 
@@ -37,12 +37,11 @@ if (isset($_POST['updateSubmit'])) {
   // Get the values from the form
  
   $updateAppointmentCode = $_POST['updateAppointmentCode'];
-  $updatereleasedBy = $_POST['updatereleasedBy'];
-  $updateclaimedBy = $_POST['updateclaimedBy'];
-  $updatenotes = $_POST['updatenotes'];
+  $updateLocator = $_POST['updateLocator'];
+  $updateStatus = $_POST['updateStatus'];
 
   // Perform the database update with NOW()
-  $sql = "UPDATE releasing_scan SET releasedBy = '$updatereleasedBy', claimedBy = '$updateclaimedBy', notes = '$updatenotes' WHERE appointmentCode = '$updateAppointmentCode'";
+  $sql = "UPDATE releasing_scan SET locator = '$updateLocator', status = '$updateStatus' WHERE appointmentCode = '$updateAppointmentCode'";
 
 if ($conn->query($sql) === TRUE) {
   echo '<script>alert("Record updated successfully.");</script>';
@@ -147,7 +146,7 @@ include "../includes/header.php";
 
 <!-- Update Record Section -->
 <div id="updateRecord">
-  <form action="update.php" method="post">
+  <form action="updatepnoy.php" method="post">
     <!-- Add values to the hidden fields -->
     <input type="hidden" id="updateAppointmentCode" name="updateAppointmentCode" value="<?php echo $updateAppointmentCode; ?>">
     <input type="hidden" id="updateLastName" name="updateLastName" value="<?php echo $updateLastName; ?>">
@@ -155,19 +154,16 @@ include "../includes/header.php";
     <input type="hidden" id="updateMiddleName" name="updateMiddleName" value="<?php echo $updateMiddleName; ?>">
 
     <div class="center-container">
-      <label for="updatereleasedBy">Released By:</label>
-      <input type="text" id="updatereleasedBy" name="updatereleasedBy" value="<?php echo $userRole; ?>" readonly><br>
+      <label for="updateLocator">Locate By:</label>
+      <input type="text" id="updateLocator" name="updateLocator" value="<?php echo $userRole; ?>" readonly><br>
 
-      <label for="updateclaimedBy">Claimed By:</label>
-      <select id="updateclaimedBy" name="updateclaimedBy">
+      <label for="updateStatus">Status:</label>
+      <select id="updateStatus" name="updateStatus">
         <option value="" disabled selected>--select--</option>
-        <option value="Owner">Owner</option>
-        <option value="Mother/Father">Mother/Father</option>
-        <option value="Representative">Representative</option>
+        <option value="Available">Available</option>
+        <option value="Not Available">Not Available</option>
+        <option value="Suspended">Suspended</option>
       </select><br>
-
-      <label for="updatenotes">Notes:</label>
-      <input type="text" id="updatenotes" name="updatenotes" style="padding-bottom: 30px;" autocomplete="off"><br><br>
 
       <!-- Modify the Submit button -->
       <button type="submit" name="updateSubmit">Submit</button>

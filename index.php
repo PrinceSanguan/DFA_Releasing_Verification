@@ -2,14 +2,36 @@
 session_start();
 
 // Define the hard-coded usernames and passwords
-$processor_username = 'processor';
-$processor_password = '123';
 
-$admin_username = 'admin';
-$admin_password = '123';
+/////////administrator account//////////////////////
+$administrator_username = 'administrator';
+$administrator_password = '123';
+/////////administrator account//////////////////////
 
-$programmer_username = 'programmer';
-$programmer_password = '123';
+/////////locator account/////////////////////////
+$locator_username = 'locator';
+$locator_password = '123';
+/////////locator account/////////////////////////
+
+/////////window2 account/////////////////////////
+$window2_username = 'window2';
+$window2_password = '123';
+/////////window2 account/////////////////////////
+
+/////////window3 account/////////////////////////
+$window3_username = 'window3';
+$window3_password = '123';
+/////////window3 account/////////////////////////
+
+/////////Verification account/////////////////////////
+$verification_username = 'verification';
+$verification_password = '123';
+/////////Verification account/////////////////////////
+
+/////////Reliever account/////////////////////////
+$reliever_username = 'reliever';
+$reliever_password = '123';
+/////////Reliever account/////////////////////////
 
 // Check if the user is attempting to log in
 if (isset($_POST['username']) && isset($_POST['password'])) {
@@ -17,30 +39,37 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
     $password = $_POST['password'];
 
     // Verify the user's credentials
-    if (($username === $processor_username && $password === $processor_password) ||
-        ($username === $admin_username && $password === $admin_password) || 
-        ($username === $programmer_username && $password === $programmer_password)) {
+    if (($username === $administrator_username && $password === $administrator_password) ||
+        ($username === $locator_username && $password === $locator_password) || 
+        ($username === $window2_username && $password === $window2_password) ||
+        ($username === $window3_username && $password === $window3_password) ||
+        ($username === $verification_username && $password === $verification_password) ||
+        ($username === $reliever_username && $password === $reliever_password)) {
         $_SESSION['user'] = $username;
 
-
-    // If you want to Change the name you change here!
-    // Store the user's role in the session
-    if ($username === $processor_username) {
-        $_SESSION['role'] = 'Processor';
-    } elseif ($username === $admin_username) {
-        $_SESSION['role'] = 'Philip De Luna';
-    } elseif ($username === $programmer_username) {
-        $_SESSION['role'] = 'Prince Sanguan';
+        // Store the user's role in the session
+        if ($username === $administrator_username) {
+            $_SESSION['role'] = 'Administrator';
+        } elseif ($username === $locator_username) {
+            $_SESSION['role'] = 'Locator';
+        } elseif ($username === $window2_username) {
+            $_SESSION['role'] = 'Windows 2';
+        } elseif ($username === $window3_username) {
+            $_SESSION['role'] = 'Windows 3';
+        } elseif ($username === $verification_username) {
+            $_SESSION['role'] = 'Verification User';
+        } elseif ($username === $reliever_username) {
+            $_SESSION['role'] = 'Reliever';
+        }
     }
-  }
 }
 
 // Redirect logged-in users to the appropriate page
 if (isset($_SESSION['user'])) {
-  if ($_SESSION['user'] === 'admin' || $_SESSION['user'] === 'processor') {
+  if ($_SESSION['role'] === 'Administrator' || $_SESSION['role'] === 'Verification User') {
       header('Location: app/pages/verification.php');
-  } elseif ($_SESSION['user'] === 'programmer') {
-      header('Location: app/pages/verification.php'); // Change this to the appropriate Programmer page
+  } else {
+      header('Location: app/pages/search.php');
   }
   exit();
 }

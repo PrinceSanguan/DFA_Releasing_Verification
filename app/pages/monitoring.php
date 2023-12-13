@@ -2,12 +2,13 @@
 // Start The Session
 session_start();
 
-// Check if the user is DFA Employee
-if (!isset($_SESSION['user']) || ($_SESSION['user'] !== 'processor' && $_SESSION['user'] !== 'admin' && $_SESSION['user'] !== 'programmer')) {
-  // Redirect to a different page or display an error message
-  echo "Access denied. Only DFA Employee can access here!.";
-  exit();
+// Check if the user is logged in
+if (!isset($_SESSION['user'])) {
+    // Redirect to a different page or display an error message
+    echo "Access denied. Please log in to access this page.";
+    exit();
 }
+
 // Get the user's role from the session
 if (isset($_SESSION['role'])) {
     $userRole = $_SESSION['role'];
@@ -74,10 +75,12 @@ include "../includes/header.php";
     </form>
 -->
 
+<!--
     <form method="post">
         <input type="date" id="selected_date" name="selected_date">
         <button type="submit" name="filter_button" class="button-85" role="button">Filter Data</button>
     </form>
+-->
 
     <!-- Display the data in an HTML table -->
     <table border='1'>
@@ -91,6 +94,8 @@ include "../includes/header.php";
             <th>Birth Place</th>
             <th>Site</th>
             <th>Package Id</th>
+            <th>Locator</th>
+            <th>Status</th>
             <th>Released By</th>
             <th>Claimed By</th>
             <th>Notes</th>
@@ -111,6 +116,8 @@ include "../includes/header.php";
             echo "<td>" . $row['birthPlace'] . "</td>";
             echo "<td>" . $row['site'] . "</td>";
             echo "<td>" . $row['packageId'] . "</td>";
+            echo "<td>" . $row['locator'] . "</td>";
+            echo "<td>" . $row['status'] . "</td>";
             echo "<td>" . $row['releasedBy'] . "</td>";
             echo "<td>" . $row['claimedBy'] . "</td>";
             echo "<td>" . $row['notes'] . "</td>";
@@ -137,4 +144,29 @@ include "../includes/header.php";
 </html>
 
 <!-- HTML !-->
+
+<!--
+
+	CREATE TABLE releasing_scan (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    appointmentCode VARCHAR(255) NOT NULL,
+    lastName VARCHAR(255) NOT NULL,
+    firstName VARCHAR(255) NOT NULL,
+    middleName VARCHAR(255),
+    gender VARCHAR(10),
+    birthDate VARCHAR(255),
+    birthPlace VARCHAR(255),
+	site VARCHAR(255),
+	packageId VARCHAR(255),
+	locator VARCHAR(255),
+    status VARCHAR(255),
+    releasedBy VARCHAR(255),
+    claimedBy VARCHAR(255),
+    notes VARCHAR(255),
+    scan_datetime DATETIME
+);
+
+ This is how to create a table for reference only!! dont touch this!!!!
+-->
+
 

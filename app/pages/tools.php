@@ -2,19 +2,19 @@
 
 session_start();
 
-// Check if the user is DFA Employee
-if (!isset($_SESSION['user']) || ($_SESSION['user'] !== 'processor' && $_SESSION['user'] !== 'admin' && $_SESSION['user'] !== 'programmer')) {
-  // Redirect to a different page or display an error message
-  echo "Access denied. Only DFA Employee can access here!.";
-  exit();
+// Check if the user is DFA Employee (Administrator, Locator, or Reliever)
+if (!isset($_SESSION['user']) || !in_array($_SESSION['role'], ['Administrator', 'Locator', 'Reliever'])) {
+	// Redirect to a different page or display an error message
+	echo "Access denied. Only Administrator, Locator, and Reliever can access here!";
+	exit();
 }
 
 // Get the user's role from the session
 if (isset($_SESSION['role'])) {
-  $userRole = $_SESSION['role'];
+	$userRole = $_SESSION['role'];
 } else {
-  // Default role if not set (you can customize this as needed)
-  $userRole = "Unknown";
+	// Default role if not set (you can customize this as needed)
+	$userRole = "Unknown";
 }
 
 // Database connection
