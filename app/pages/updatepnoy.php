@@ -57,7 +57,7 @@ include "../includes/header.php";
 ?>
 
 <!----------css for this page----------------->
-<!------<link rel="stylesheet" href="../../assets/css/update.css">----->
+<!------<link rel="stylesheet" href="../../assets/css/update.css">-->
 <!----------css for this page----------------->
 
 <style>
