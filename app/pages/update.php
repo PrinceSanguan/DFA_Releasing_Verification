@@ -58,82 +58,9 @@ include "../includes/header.php";
 ?>
 
 <!----------css for this page----------------->
-<!------<link rel="stylesheet" href="../../assets/css/update.css">----->
+<link rel="stylesheet" href="../../assets/css/update.css">
 <!----------css for this page----------------->
 
-<style>
-  /* Style for Form */
-  form {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-
-  label {
-    font-size: 25px;
-    margin-bottom: 5px;
-    text-align: center; /* Center the text */
-    display: block; /* Ensure the text is on a new line */
-  }
-
-  input,
-  select {
-    font-size: 25px;
-    width: 100%; /* Adjust the width as needed */
-    margin-bottom: 15px;
-  }
-
-  .center-container {
-    max-width: 50%;
-    margin: 0 auto;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 50px 60px 20px rgba(0, 0, 0, 0.1);
-    text-align: center;
-  }
-
-  /* Center the label and --select-- option in the dropdown */
-  select {
-    font-size: 25px;
-    width: 100%;
-    margin-bottom: 15px;
-    text-align-last: center; /* Center the text within the select element */
-  }
-
-  option[value=""][disabled] {
-    display: none;
-  }
-
-  option {
-    text-align: center;
-  }
-
-  /* button */
-  button[type="submit"],
-  button[type="button"] {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    margin: 10px; /* Add margin for spacing */
-  }
-
-  button[type="submit"]:hover,
-  button[type="button"]:hover {
-    background-color: #0056b3;
-  }
-
-  button[type="button"] {
-    background-color: #ff0000; /* Red background color */
-  }
-
-  button[type="button"]:hover {
-    background-color: lightcoral; /* Lighter red on hover */
-  }
-</style>
 
 <!-- Display the details on the update page -->
 <div class="updateRecord">
