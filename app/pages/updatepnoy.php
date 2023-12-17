@@ -155,7 +155,7 @@ include "../includes/header.php";
 
     <div class="center-container">
       <label for="updateLocator">Locate By:</label>
-      <input type="text" id="updateLocator" name="updateLocator" value="<?php echo $userRole; ?>" readonly><br>
+      <input type="text" id="updateLocator" name="updateLocator" value="<?php echo $userRole; ?>" readonly style="text-align: center;"><br>
 
       <label for="updateStatus">Status:</label>
       <select id="updateStatus" name="updateStatus">

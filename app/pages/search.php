@@ -60,8 +60,16 @@ if (isset($_POST['submit'])) {
         }
     }
 } else {
-    // If the form is not submitted, fetch all data
-    $sql = "SELECT * FROM releasing_scan";
+    // If the form is not submitted, fetch data based on user role
+    if ($userRole == 'Locator') {
+        $sql = "SELECT * FROM releasing_scan WHERE locator IS NULL";
+    } elseif ($userRole == 'Windows 2' || $userRole == 'Windows 3') {
+        // For Windows2 and Windows3, fetch all data where releasedby is null
+        $sql = "SELECT * FROM releasing_scan WHERE releasedBy IS NULL";
+    } else {
+        // For other user roles, fetch all data
+        $sql = "SELECT * FROM releasing_scan";
+    }
 }
 
 // Execute the SQL query

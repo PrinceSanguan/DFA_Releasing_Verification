@@ -156,7 +156,8 @@ include "../includes/header.php";
 
     <div class="center-container">
       <label for="updatereleasedBy">Released By:</label>
-      <input type="text" id="updatereleasedBy" name="updatereleasedBy" value="<?php echo $userRole; ?>" readonly><br>
+      <!-- Apply CSS style to center text in the input field -->
+      <input type="text" id="updatereleasedBy" name="updatereleasedBy" value="<?php echo $userRole; ?>" readonly style="text-align: center;"><br>
 
       <label for="updateclaimedBy">Claimed By:</label>
       <select id="updateclaimedBy" name="updateclaimedBy">
